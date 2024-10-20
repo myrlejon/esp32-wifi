@@ -1,6 +1,6 @@
 // wifi.c
 
-#include "wifi.h"
+#include "def.h"
 #include "esp_wifi.h"
 #include "esp_event.h"
 #include "esp_log.h"
@@ -26,7 +26,7 @@ void wifi_init_softap(void) {
             .ssid = "ESP32-Hotspot",        // SSID of the hotspot
             .ssid_len = strlen("ESP32-Hotspot"),
             .channel = 1,                   // Channel number
-            .password = "1234",         // Password for the AP
+            .password = "12345678",         // Password for the AP
             .max_connection = 4,            // Maximum number of clients
             .authmode = WIFI_AUTH_WPA_WPA2_PSK,  // Encryption type
         },

@@ -1,4 +1,4 @@
-#include "wifi.h"  
+#include "def.h"
 #include "nvs_flash.h"
 
 void app_main(void) {
@@ -7,4 +7,5 @@ void app_main(void) {
 
     // Start the WiFi Access Point
     wifi_init_softap();
+    start_webserver();
 }
