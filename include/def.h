@@ -5,7 +5,7 @@
 #include "esp_http_server.h"
 
 void wifi_init_softap(void);
-void start_http_server(httpd_handle_t *server);
+void start_webserver(void);
 
 esp_err_t read_temperature(void);
 float get_temperature(void);

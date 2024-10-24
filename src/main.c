@@ -5,9 +5,13 @@
 #include "esp_http_server.h"
 
 void app_main(void) {
-    // Initialize your WiFi and other components here
-    httpd_handle_t server = NULL;
-    start_http_server(&server);  // Make sure the signature matches
+    // httpd_handle_t server = NULL;
+    // start_http_server(&server);
+    nvs_flash_init(); 
+
+    wifi_init_softap();
+
+    start_webserver();
 
     while (1) {
         vTaskDelay(1000 / portTICK_PERIOD_MS);
