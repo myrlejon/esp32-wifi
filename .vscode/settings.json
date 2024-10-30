@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "nvs_flash.h": "c"
+        "nvs_flash.h": "c",
+        "u8g2.h": "c"
     }
 }
