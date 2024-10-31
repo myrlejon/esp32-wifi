@@ -6,6 +6,7 @@
 
 void wifi_init_softap(void);
 void start_webserver(void);
+void ssd1309_run(void);
 
 esp_err_t read_temperature(void);
 float get_temperature(void);

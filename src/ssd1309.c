@@ -2,8 +2,8 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "driver/spi_master.h"
-#include "../include/u8g2/csrc/u8g2.h"
-#include "../include/u8g2-hal-esp-idf/include/u8g2_esp32_hal.h" // Include the ESP32 HAL for u8g2
+#include "u8g2.h"
+#include "u8g2_esp32_hal.h" // Include the ESP32 HAL for u8g2
 #include "esp_log.h"
 
 #define PIN_SCK   18  // Clock pin
@@ -14,7 +14,7 @@
 
 static const char *TAG = "SSD1309";
 
-void ssd1309_init(u8g2_t *u8g2) {
+esp_err_t ssd1309_init(u8g2_t *u8g2) {
     u8g2_esp32_hal_t u8g2_esp32_hal = {
         .dc   = PIN_DC,
         .reset  = PIN_RST,
@@ -23,6 +23,10 @@ void ssd1309_init(u8g2_t *u8g2) {
         .bus.spi.mosi = PIN_MOSI,
         // .miso = -1   // Not used
     };
+
+
+    ESP_LOGI(TAG, "Running u8g2 init.");
+
     u8g2_esp32_hal_init(u8g2_esp32_hal);
 
     // Initialize u8g2 for SPI
@@ -31,6 +35,8 @@ void ssd1309_init(u8g2_t *u8g2) {
     // Initialize the display
     u8g2_InitDisplay(u8g2);
     u8g2_SetPowerSave(u8g2, 0); // Wake up display
+
+    return ESP_OK;
 }
 
 void ssd1309_reset(void) {

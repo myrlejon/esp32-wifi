@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "nvs_flash.h": "c",
-        "u8g2.h": "c"
+        "u8g2.h": "c",
+        "u8g2_esp32_hal.h": "c"
     }
 }
