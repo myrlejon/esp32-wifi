@@ -15,6 +15,7 @@
 static const char *TAG = "SSD1309";
 
 esp_err_t ssd1309_init(u8g2_t *u8g2) {
+    esp_err_t err = ESP_OK;
     u8g2_esp32_hal_t u8g2_esp32_hal = {
         .dc   = PIN_DC,
         .reset  = PIN_RST,
@@ -23,7 +24,6 @@ esp_err_t ssd1309_init(u8g2_t *u8g2) {
         .bus.spi.mosi = PIN_MOSI,
         // .miso = -1   // Not used
     };
-
 
     ESP_LOGI(TAG, "Running u8g2 init.");
 
@@ -47,7 +47,7 @@ void ssd1309_reset(void) {
     vTaskDelay(10 / portTICK_PERIOD_MS);
 }
 
-void ssd1309_run(void) {
+void ssd1309_run(float temp) {
     ESP_LOGI(TAG, "Initializing SSD1309...");
 
     // Initialize the display
@@ -59,8 +59,14 @@ void ssd1309_run(void) {
     u8g2_ClearBuffer(&u8g2);
 
     // Draw text
-    u8g2_SetFont(&u8g2, u8g2_font_ncenB08_tr);
-    u8g2_DrawStr(&u8g2, 0, 10, "Hello, SSD1309!");
+    u8g2_SetFont(&u8g2, u8g2_font_ncenB14_tr);
+
+    // Konvertera temp till string och printa
+    char buffer[20];
+    snprintf(buffer, sizeof(buffer), "Temp: %.2f", temp);
+    u8g2_DrawStr(&u8g2, 10, 45, buffer);
+    //
+
 
     // Send the buffer to the display
     u8g2_SendBuffer(&u8g2);
