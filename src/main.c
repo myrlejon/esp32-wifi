@@ -15,8 +15,8 @@ void app_main(void) {
 
     float temp = 0.0;
 
-    read_temperature();
-    temp = get_temperature();
+    temp = read_temperature();
+    // temp = get_temperature();
 
     vTaskDelay(1000 / portTICK_PERIOD_MS);
 
