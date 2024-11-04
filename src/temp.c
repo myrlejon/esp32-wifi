@@ -3,7 +3,7 @@
 #include "esp_log.h"
 #include "freertos/task.h"
 #include "dht.h"  // Include the DHT library
-#define DHT_GPIO 12       // GPIO pin where the DHT sensor is connected
+#define DHT_GPIO 15       // GPIO pin where the DHT sensor is connected
 #define DHT_TYPE DHT_TYPE_DHT11  // Specify the DHT sensor type
 
 typedef struct {

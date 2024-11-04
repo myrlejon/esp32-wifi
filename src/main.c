@@ -8,24 +8,20 @@ void app_main(void) {
     // httpd_handle_t server = NULL;
     // start_http_server(&server);
     // nvs_flash_init(); 
-
     // wifi_init_softap();
-
     // start_webserver();
 
-    float temp = 0.0;
-    float humidity = 0.0;
+
 
     SensorData data;
 
-    data = read_temperature();
     // temp = get_temperature();
 
-    vTaskDelay(1000 / portTICK_PERIOD_MS);
-
-    ssd1309_run(data);
+    // vTaskDelay(1000 / portTICK_PERIOD_MS);
 
     while (1) {
-        vTaskDelay(1000 / portTICK_PERIOD_MS);
+        data = read_temperature();
+        vTaskDelay(10000 / portTICK_PERIOD_MS);
+        ssd1309_run(data);
     }
 }
