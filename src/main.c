@@ -14,13 +14,16 @@ void app_main(void) {
     // start_webserver();
 
     float temp = 0.0;
+    float humidity = 0.0;
 
-    temp = read_temperature();
+    SensorData data;
+
+    data = read_temperature();
     // temp = get_temperature();
 
     vTaskDelay(1000 / portTICK_PERIOD_MS);
 
-    ssd1309_run(temp);
+    ssd1309_run(data);
 
     while (1) {
         vTaskDelay(1000 / portTICK_PERIOD_MS);

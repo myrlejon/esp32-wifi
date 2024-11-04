@@ -5,6 +5,7 @@
 #include "u8g2.h"
 #include "u8g2_esp32_hal.h" // Include the ESP32 HAL for u8g2
 #include "esp_log.h"
+#include "def.h"
 
 #define PIN_SCK   18  // Clock pin
 #define PIN_MOSI  23  // Data pin
@@ -47,7 +48,7 @@ void ssd1309_reset(void) {
     vTaskDelay(10 / portTICK_PERIOD_MS);
 }
 
-void ssd1309_run(float temp) {
+void ssd1309_run(SensorData data) {
     ESP_LOGI(TAG, "Initializing SSD1309...");
 
     // Initialize the display
@@ -59,11 +60,11 @@ void ssd1309_run(float temp) {
     u8g2_ClearBuffer(&u8g2);
 
     // Draw text
-    u8g2_SetFont(&u8g2, u8g2_font_ncenB14_tr);
+    u8g2_SetFont(&u8g2, u8g2_font_ncenB08_tr);
 
     // Konvertera temp till string och printa
-    char buffer[20];
-    snprintf(buffer, sizeof(buffer), "Temp: %.2f", temp);
+    char buffer[30];
+    snprintf(buffer, sizeof(buffer), "Temp: %.2f, Hum: %.2f", data.temp, data.humidity);
     u8g2_DrawStr(&u8g2, 10, 45, buffer);
     //
 
