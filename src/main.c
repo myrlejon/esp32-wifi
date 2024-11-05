@@ -18,8 +18,9 @@ void app_main(void) {
     // vTaskDelay(1000 / portTICK_PERIOD_MS);
 
     while (1) {
-        data = read_temperature();
-        vTaskDelay(10000 / portTICK_PERIOD_MS);
+        // data = read_temperature();
         ssd1309_run(data);
+        vTaskDelay(1000 / portTICK_PERIOD_MS);
+        deepsleep();
     }
 }

@@ -9,6 +9,7 @@ typedef struct {
 void wifi_init_softap(void);
 void start_webserver(void);
 void ssd1309_run(SensorData data);
+void deepsleep(void);
 
 SensorData read_temperature(void);
 float get_temperature(void);
