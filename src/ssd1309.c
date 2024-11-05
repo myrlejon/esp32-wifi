@@ -16,7 +16,6 @@
 static const char *TAG = "SSD1309";
 
 esp_err_t ssd1309_init(u8g2_t *u8g2) {
-    esp_err_t err = ESP_OK;
     u8g2_esp32_hal_t u8g2_esp32_hal = {
         .dc   = PIN_DC,
         .reset  = PIN_RST,

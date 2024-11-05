@@ -4,6 +4,7 @@
         "u8g2.h": "c",
         "u8g2_esp32_hal.h": "c",
         "spi_master.h": "c",
-        "esp_wifi.h": "c"
+        "esp_wifi.h": "c",
+        "freertos.h": "c"
     }
 }

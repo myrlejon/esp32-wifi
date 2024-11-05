@@ -11,8 +11,6 @@ void app_main(void) {
     // wifi_init_softap();
     // start_webserver();
 
-
-
     SensorData data;
 
     // temp = get_temperature();

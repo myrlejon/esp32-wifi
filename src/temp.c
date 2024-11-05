@@ -11,8 +11,6 @@ typedef struct {
     float humidity;
 } SensorData;
 
-// static float temperature = 0.0;
-// static float humidity = 0.0;
 static const char *TAG = "dht_temp";
 
 // Function to read temperature from the DHT sensor
