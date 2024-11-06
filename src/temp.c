@@ -31,9 +31,3 @@ SensorData read_temperature(void) {
     }
     return data;
 }
-
-// Function to get the current temperature
-// float get_temperature(void) {
-//     ESP_LOGI(TAG, "getting temperature");
-//     return temperature;
-// }

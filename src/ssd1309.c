@@ -16,6 +16,9 @@
 static const char *TAG = "SSD1309";
 
 esp_err_t ssd1309_init(u8g2_t *u8g2) {
+    u8g2_t *u8g2;
+    ssd1309_reset();    
+
     u8g2_esp32_hal_t u8g2_esp32_hal = {
         .dc   = PIN_DC,
         .reset  = PIN_RST,
@@ -47,31 +50,31 @@ void ssd1309_reset(void) {
     vTaskDelay(10 / portTICK_PERIOD_MS);
 }
 
-void ssd1309_run(SensorData data) {
-    ESP_LOGI(TAG, "Initializing SSD1309...");
+// void ssd1309_run(SensorData data) {
+//     ESP_LOGI(TAG, "Initializing SSD1309 via ssd1309_run");
 
-    // Initialize the display
+//     // Initialize the display
+//     u8g2_t u8g2;
+//     ssd1309_reset();
+//     ssd1309_init(&u8g2);
+
+    
+//     // while (1) {
+//     //     vTaskDelay(1000 / portTICK_PERIOD_MS);
+//     // }
+// }
+
+esp_err_t ssd1309_update(SensorData data) {
+    ESP_LOGI(TAG, "Updating SSD1309 via ssd1309_update");
+
     u8g2_t u8g2;
-    ssd1309_reset();
-    ssd1309_init(&u8g2);
-
-    // Clear the display
-    u8g2_ClearBuffer(&u8g2);
-
-    // Draw text
-    u8g2_SetFont(&u8g2, u8g2_font_ncenB08_tr);
 
     // Konvertera temp till string och printa
+    u8g2_ClearBuffer(&u8g2);
+    u8g2_SetFont(&u8g2, u8g2_font_ncenB08_tr);
     char buffer[30];
     snprintf(buffer, sizeof(buffer), "Temp: %.2f, Hum: %.2f", data.temp, data.humidity);
     u8g2_DrawStr(&u8g2, 10, 45, buffer);
-    //
-
-
     // Send the buffer to the display
     u8g2_SendBuffer(&u8g2);
-    
-    while (1) {
-        vTaskDelay(1000 / portTICK_PERIOD_MS);
-    }
-}
+};

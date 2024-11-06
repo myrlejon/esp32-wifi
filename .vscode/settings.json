@@ -6,6 +6,7 @@
         "spi_master.h": "c",
         "esp_wifi.h": "c",
         "freertos.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "task.h": "c"
     }
 }
